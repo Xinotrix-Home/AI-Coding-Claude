@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  password      String
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  tasks         Task[]
+  notes         Note[]
+  chatMessages  ChatMessage[]
+  analytics     Analytics[]
+
+  @@map("users")
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  status      String   @default("pending") // pending, in_progress, completed
+  priority    String   @default("medium") // low, medium, high, urgent
+  aiPriority  Int?     // AI-calculated priority score (0-100)
+  dueDate     DateTime?
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  tags        String?  // Comma-separated tags
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("tasks")
+  @@index([userId])
+  @@index([status])
+  @@index([priority])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  tags      String?  // Comma-separated tags
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notes")
+  @@index([userId])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  role      String   // user, assistant, system
+  content   String
+  model     String?  // gpt-4, claude, deepseek, grok
+  createdAt DateTime @default(now())
+  userId    String
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("chat_messages")
+  @@index([userId])
+}
+
+model Analytics {
+  id               String   @id @default(cuid())
+  date             DateTime @default(now())
+  tasksCompleted   Int      @default(0)
+  tasksCreated     Int      @default(0)
+  notesCreated     Int      @default(0)
+  chatInteractions Int      @default(0)
+  productivityScore Float?
+  userId           String
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("analytics")
+  @@index([userId])
+  @@index([date])
+}
