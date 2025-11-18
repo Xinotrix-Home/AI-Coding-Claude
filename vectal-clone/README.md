@@ -2,9 +2,9 @@
 
 ## 🚀 Deploy Your Own
 
-**👉 [STEP-BY-STEP DEPLOYMENT GUIDE](./DEPLOY-STEP-BY-STEP.md)** ← Click here to deploy!
+**👉 [SIMPLE DEPLOYMENT GUIDE - WORKS 100%](./SIMPLE-DEPLOY.md)** ← Start here!
 
-Or go directly to: [Vercel Dashboard](https://vercel.com/new) | [Full Deployment Docs](./DEPLOYMENT.md)
+Alternative guides: [Step-by-Step](./DEPLOY-STEP-BY-STEP.md) | [Full Docs](./DEPLOYMENT.md) | [Go to Vercel](https://vercel.com/new)
 
 ---
 
