@@ -1,10 +1,14 @@
 # Vectal Clone - AI-Powered Task Management Platform
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Xinotrix-Home/AI-Coding-Claude&project-name=vectal-clone&root-directory=vectal-clone)
+## 🚀 Deploy Your Own
+
+**👉 [STEP-BY-STEP DEPLOYMENT GUIDE](./DEPLOY-STEP-BY-STEP.md)** ← Click here to deploy!
+
+Or go directly to: [Vercel Dashboard](https://vercel.com/new) | [Full Deployment Docs](./DEPLOYMENT.md)
+
+---
 
 A full-featured clone of Vectal.ai built with Next.js, React, TypeScript, and OpenAI integration. This platform provides intelligent task management, AI-powered chat assistance, notes system, and comprehensive analytics.
-
-**🚀 [Quick Deploy Guide](./DEPLOY-NOW.md)** | **📚 [Full Deployment Docs](./DEPLOYMENT.md)**
 
 ## Features
 
