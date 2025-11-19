@@ -43,11 +43,12 @@ app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.include_router(health.router, prefix="/api/v1", tags=["Health"])
 
 # Import routes
-from api.routes import auth, oauth, tasks, projects
+from api.routes import auth, oauth, tasks, projects, notes
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["Authentication"])
 app.include_router(oauth.router, prefix="/api/v1/oauth", tags=["OAuth"])
 app.include_router(tasks.router, prefix="/api/v1/tasks", tags=["Tasks"])
 app.include_router(projects.router, prefix="/api/v1/projects", tags=["Projects"])
+app.include_router(notes.router, prefix="/api/v1/notes", tags=["Notes"])
 
 # Global exception handler
 @app.exception_handler(Exception)
